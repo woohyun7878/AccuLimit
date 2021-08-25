@@ -1,8 +1,6 @@
 # AccuLimit
 ### Brought to you by Woohyun Michael Jo . . .
 ## A limiter for your precious Macbook battery (Intel Only)
-========================
-
 Rechargeable batteries, or accumulators, lose significant capacity if kept at full charge. If you are a casual gamer 
 like myself or perform graphic-intensive work on a mac, you probably keep your mac plugged in. I developed this 
 script with a simple GUI to limit the maximum battery charge on my mac; this way, you can keep the mac plugged in without
