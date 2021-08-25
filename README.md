@@ -1,25 +1,54 @@
-# Charge Limiter
+# AccuLimit
+### Brought to you by Woohyun Michael Jo . . .
+## A limiter for your precious Macbook battery (Intel Only)
+========================
 
-macOS app to set battery charge limit for Intel MacBooks
+Rechargeable batteries, or accumulators, lose significant capacity if kept at full charge. If you are a casual gamer 
+like myself or perform graphic-intensive work on a mac, you probably keep your mac plugged in. I developed this 
+script with a simple GUI to limit the maximum battery charge on my mac; this way, you can keep the mac plugged in without
+worrying about capacity loss.
 
-## Description
+The name "AccuLimit" comes from ACCU batteries (accumulators)
 
-This app modifies a parameter called `BCLM` (presumably "Battery Charge Level Max") in the SMC which limits the charge of the battery to a set value. It also modifies a parameter called `BFCL` ("Battery Final Charge Level") which controls the MagSafe LED indicator light to display the correct status.
+Function
+------------------------
+You can use the slider to set the battery charge limit at anywhere from 20% ~ 100%
+If your current charge is over the battery limit, your Mac will discharge (use the internal battery instead of the power adapter)
+until the battery level falls to the limit.
 
-The source code can be viewed by opening `src/Charge Limiter.app` in Apple's Script Editor. It is written in Javascript Application Scripting (or JXA).
+Requirements
+------------------------
+```
+# 1. python3 
+brew install python3
 
-The companion `smcutil` binary (located under `src/Charge Limiter.app/Contents/Resources`) was copied from [this repository](https://github.com/sicreative/BatteryStatusShow/blob/master/BatteryStatusShow/smcutil/Products/usr/local/bin/smcutil). The source code for `smcutil` is also available there.
+# 2. pip
+python3 -m ensurepip --upgrade 
+# based on you path settings, change python3 to python, py, or whatever you use
 
-## Releases
+# 3. other requirements 
+python3 -m pip install -r requirements.txt
 
-Download the latest version from the [releases](https://github.com/godly-devotion/charge-limiter/releases) page.
+# 4. Turn off system battery care function from System Preferences
+```
 
-## Running
+Running the script
+------------------------
+```
+# Simply run the script, and GUI will pop up
+python3 main.py
 
-The app is not code signed so you need to right-click on the app and select "Open" to bypass Gatekeeper's warning.
+# When you move the slider, terminal will ask for your password
+password: [ENTER YOUR PASSWORD]
 
-If you wish to undo the changes, set the charge limit to "100". The app itself does not install anything so if you do not need it anymore you can safely move it to the trash.
+# You may also need to allow /scm/scm to be executed in the Security/Privacy preference pane
+```
 
-## Updates
+Acknowledgements
+------------------------
+SMC files are taken from [smcFanControl](https://github.com/hholtmann/smcFanControl "smcFanControl"). 
 
-This app will automatically check and notify you for any updates when you run it.
+Notes
+------------------------
+1. The script executes root system functions, and I do not take responsibility for any damage it may cause. (I didn't encounter any)
+2. M1 Macs are NOT supported. I may develop one for M1 Macs if I switch to one as my daily driver.
